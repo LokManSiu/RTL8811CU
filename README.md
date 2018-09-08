@@ -1,7 +1,31 @@
 # rtl88x1cu
 This repository contains drivers for Realtek 8811CU/8821CU Wireless LAN 802.11ac USB NIC. Soruce code is based on a driver CD provided with a Realtek 8811CU card. It's updated to build on newer kernel versions.
 
-## Build and install
+## Build and install with DKMS
+
+DKMS is a system which will automatically recompile and install a kernel module when a new kernel gets installed or updated. To make use of DKMS, install the dkms package, which on Debian (based) systems is done like this:
+```
+sudo apt install dkms
+```
+To make use of the DKMS feature with this project, do the following:
+```
+git clone https://github.com/LokManSiu/rtl88x1cu.git -b master
+cd rtl88x1cu
+export DRV_NAME=rtl88x1cu
+export DRV_VERSION=5.2.5.3
+sudo mkdir /usr/src/${DRV_NAME}-${DRV_VERSION}
+git archive master | sudo tar -x -C /usr/src/${DRV_NAME}-${DRV_VERSION}
+sudo dkms add -m ${DRV_NAME} -v ${DRV_VERSION}
+sudo dkms build -m ${DRV_NAME} -v ${DRV_VERSION}
+sudo dkms install -m ${DRV_NAME} -v ${DRV_VERSION}
+```
+If you later on want to remove it again, do the following:
+```
+export DRV_NAME=rtl88x1cu
+export DRV_VERSION=5.2.5.3
+sudo dkms remove ${DRV_NAME}/${DRV_VERSION} --all
+```
+## Build and install without DKMS
 Use following commands in source directory:
 ```
 git clone https://github.com/LokManSiu/rtl88x1cu.git -b master
