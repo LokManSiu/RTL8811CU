@@ -1,5 +1,5 @@
 # rtl88x1cu
-This repository contains drivers for Realtek 8811CU/8821CU Wireless LAN 802.11ac USB NIC. Soruce code is based on a driver CD provided with a Realtek 8811CU card. It's updated to build on newer kernel versions.
+This repository contains drivers for Realtek 8811CU/8821CU Wireless LAN 802.11ac USB NIC. Soruce code is based on a driver CD provided with a Realtek 8811CU card (Backup Link: https://github.com/LokManSiu/RTL8811CU_Drivers_CD_Backup). It's updated to build on newer kernel versions.
 
 ## Build and install with DKMS
 
